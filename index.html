@@ -14,20 +14,33 @@ body {
 
 header {
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 20px;
     background: linear-gradient(90deg, #0f172a, #111827);
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 42px;
     color: #00ffcc;
-    margin-bottom: 10px;
 }
 
-h2 {
+.typing {
+    font-size: 20px;
     color: #38bdf8;
-    border-bottom: 1px solid #1f2937;
-    padding-bottom: 5px;
+    border-right: 2px solid #38bdf8;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 4s steps(40, end) forwards,
+               blink 0.7s infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 320px }
+}
+
+@keyframes blink {
+    50% { border-color: transparent }
 }
 
 .section {
@@ -42,6 +55,12 @@ h2 {
     margin-top: 20px;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0,255,204,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0,255,204,0.3);
 }
 
 ul {
@@ -54,12 +73,22 @@ li {
 }
 
 a {
-    color: #00ffcc;
     text-decoration: none;
 }
 
-a:hover {
-    color: #38bdf8;
+.cv-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #00ffcc;
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.cv-btn:hover {
+    background-color: #38bdf8;
 }
 
 footer {
@@ -76,17 +105,16 @@ footer {
 
 <header>
     <h1>Muhammad Abozied</h1>
-    <p>Cybersecurity Incident Response Analyst | SOC | Blue Team</p>
+    <div class="typing">SOC Analyst | Incident Responder | Blue Team</div>
+    <br>
+    <a href="Muhammad ABOZIED.pdf" class="cv-btn" download>Download CV</a>
 </header>
 
 <div class="section">
     <h2>About Me</h2>
     <div class="card">
-        <p>
-        Cybersecurity analyst specialized in SIEM monitoring, threat detection, 
-        log analysis, and incident response. Passionate about defending 
-        organizational infrastructure and continuously improving detection capabilities.
-        </p>
+        Cybersecurity analyst specialized in SIEM monitoring, 
+        threat detection, log analysis, and incident response.
     </div>
 </div>
 
@@ -99,43 +127,12 @@ footer {
             <li>✔ Alert Triaging</li>
             <li>✔ Digital Forensics</li>
             <li>✔ Network Security</li>
-            <li>✔ Fortinet & Firewall Management</li>
         </ul>
-    </div>
-</div>
-
-<div class="section">
-    <h2>Certifications</h2>
-    <div class="card">
-        <ul>
-            <li>ISC2 Certified in Cybersecurity (CC)</li>
-            <li>Fortinet Certified Associate</li>
-            <li>SOC Level 1 – TryHackMe</li>
-        </ul>
-    </div>
-</div>
-
-<div class="section">
-    <h2>CTF Achievements</h2>
-    <div class="card">
-        <ul>
-            <li>🥇 1st Place – IT-Gate Blue Team CTF</li>
-            <li>Egypt National Cybersecurity CTF</li>
-            <li>0xL4ugh CTF – Forensics & OSINT</li>
-        </ul>
-    </div>
-</div>
-
-<div class="section">
-    <h2>Contact</h2>
-    <div class="card">
-        <p>Email: muhammadabozied3@gmail.com</p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/muhammadabozied" target="_blank">View Profile</a></p>
     </div>
 </div>
 
 <footer>
-    © 2026 Muhammad Abozied | SOC Analyst Portfolio
+    © 2026 Muhammad Abozied | Cybersecurity Portfolio
 </footer>
 
 </body>
