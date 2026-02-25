@@ -91,11 +91,12 @@
       white-space: nowrap;
       overflow: hidden;
       width: 0;
-      animation: typing 5s steps(50, end) forwards, blink 0.75s step-end infinite;
+      /* عدد الحروف الجديد: "SOC Analyst | Cybersecurity Instructor" = 41 حرفاً */
+      animation: typing 4s steps(41, end) forwards, blink 0.75s step-end infinite;
     }
     @keyframes typing {
       from { width: 0; }
-      to { width: 600px; } /*足够显示完整标题 */
+      to { width: 41ch; }
     }
     @keyframes blink {
       50% { border-color: transparent; }
@@ -139,7 +140,6 @@
       margin-bottom: 3rem;
       animation: fadeInUp 1s ease-out both;
     }
-    /* staggered animation for sections */
     section:nth-child(1) { animation-delay: 0.1s; }
     section:nth-child(2) { animation-delay: 0.2s; }
     section:nth-child(3) { animation-delay: 0.3s; }
@@ -352,7 +352,7 @@
     }
 
     /* Mobile responsiveness */
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
       h1 { font-size: 2.5rem; }
       .typing-container { font-size: 1.2rem; min-height: auto; }
       .typing {
@@ -370,7 +370,8 @@
   <header>
     <h1>Muhammad ABOZIED</h1>
     <div class="typing-container">
-      <span class="typing">SOC Analyst | Cybersecurity Instructor | Incident Response</span>
+      <!-- تم إزالة "Incident Response" بناءً على الطلب -->
+      <span class="typing">SOC Analyst | Cybersecurity Instructor</span>
     </div>
     <a href="Muhammad ABOZIED.pdf" class="btn-cv" download>
       <i class="fas fa-download"></i> Download CV (PDF)
