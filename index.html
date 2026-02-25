@@ -1,139 +1,555 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Muhammad Abozied | SOC Analyst</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad ABOZIED | SOC Analyst & Cybersecurity Instructor</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Courier New', monospace;
-    background-color: #0a0f1c;
-    color: #e0e0e0;
-}
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background-color: #0b0f1a;
+      color: #e2e8f0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-header {
-    text-align: center;
-    padding: 80px 20px;
-    background: linear-gradient(90deg, #0f172a, #111827);
-}
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1a1f2f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2d3b5e;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3e5a8a;
+    }
 
-h1 {
-    font-size: 42px;
-    color: #00ffcc;
-}
+    /* Header */
+    header {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(145deg, #0d1225 0%, #141b33 100%);
+      border-bottom: 2px solid #2a3a5e;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0,255,255,0.03) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
 
-.typing {
-    font-size: 20px;
-    color: #38bdf8;
-    border-right: 2px solid #38bdf8;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 0;
-    animation: typing 4s steps(40, end) forwards,
-               blink 0.7s infinite;
-}
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #a0e9ff, #4facfe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.5px;
+      position: relative;
+      z-index: 1;
+      animation: fadeInDown 1s ease-out;
+    }
 
-@keyframes typing {
-    from { width: 0 }
-    to { width: 320px }
-}
+    .typing-container {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #a0c0ff;
+      margin-bottom: 2rem;
+      min-height: 3rem;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+    .typing {
+      display: inline-block;
+      border-right: 3px solid #38bdf8;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 5s steps(50, end) forwards, blink 0.75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 600px; } /*足够显示完整标题 */
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
 
-@keyframes blink {
-    50% { border-color: transparent }
-}
+    .btn-cv {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(145deg, #1e2b4f, #15203a);
+      color: #b0e0ff;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid #3e5e8a;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 180, 255, 0.2);
+      margin-top: 1rem;
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+    .btn-cv:hover {
+      background: linear-gradient(145deg, #2a3d6e, #1e2f55);
+      border-color: #5a9eff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 200, 255, 0.4);
+      color: white;
+    }
 
-.section {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
-}
+    /* Main container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
 
-.card {
-    background-color: #111827;
-    padding: 20px;
-    margin-top: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,255,204,0.1);
-    transition: 0.3s;
-}
+    /* Sections */
+    section {
+      margin-bottom: 3rem;
+      animation: fadeInUp 1s ease-out both;
+    }
+    /* staggered animation for sections */
+    section:nth-child(1) { animation-delay: 0.1s; }
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.3s; }
+    section:nth-child(4) { animation-delay: 0.4s; }
+    section:nth-child(5) { animation-delay: 0.5s; }
+    section:nth-child(6) { animation-delay: 0.6s; }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(0,255,204,0.3);
-}
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-ul {
-    list-style: none;
-    padding: 0;
-}
+    h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #2d3b5e;
+      display: inline-block;
+      color: #b4d0ff;
+      letter-spacing: -0.3px;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #4facfe, #00f2fe);
+      transition: width 0.8s ease;
+    }
+    h2:hover::after {
+      width: 100%;
+    }
 
-li {
-    padding: 5px 0;
-}
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
 
-a {
-    text-decoration: none;
-}
+    .card {
+      background: rgba(18, 25, 45, 0.8);
+      backdrop-filter: blur(2px);
+      border: 1px solid #2a3a60;
+      border-radius: 20px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      animation: cardGlow 4s infinite alternate;
+    }
+    @keyframes cardGlow {
+      0% { box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
+      100% { box-shadow: 0 8px 30px rgba(0, 150, 255, 0.3); }
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: #4b7bec;
+      box-shadow: 0 15px 30px rgba(0, 150, 255, 0.5);
+    }
 
-.cv-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 25px;
-    background-color: #00ffcc;
-    color: black;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: 0.3s;
-}
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: #9bc5ff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px dashed #2e3f65;
+      padding-bottom: 0.5rem;
+    }
+    .card h3 i {
+      color: #4facfe;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+    .card:hover h3 i {
+      transform: rotate(10deg) scale(1.1);
+    }
 
-.cv-btn:hover {
-    background-color: #38bdf8;
-}
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+    }
+    .skill-tag {
+      background: #1a2645;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #b8d4ff;
+      border: 1px solid #334e7a;
+      transition: all 0.3s ease;
+      animation: tagPop 0.5s ease-out;
+    }
+    @keyframes tagPop {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .skill-tag:hover {
+      background: #25375f;
+      border-color: #5f9eff;
+      color: white;
+      transform: scale(1.05);
+    }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #0f172a;
-    margin-top: 40px;
-    font-size: 14px;
-}
-</style>
+    .list-icon {
+      list-style: none;
+    }
+    .list-icon li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      transition: transform 0.2s ease;
+    }
+    .list-icon li:hover {
+      transform: translateX(5px);
+    }
+    .list-icon li i {
+      color: #4facfe;
+      width: 1.2rem;
+      font-size: 1rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #1a2942;
+      border: 1px solid #385a9e;
+      border-radius: 30px;
+      padding: 0.2rem 1rem;
+      font-size: 0.8rem;
+      color: #b0d0ff;
+      margin-right: 0.4rem;
+      margin-bottom: 0.4rem;
+      transition: all 0.2s ease;
+    }
+    .badge:hover {
+      background: #2a3d6e;
+      transform: scale(1.05);
+      border-color: #5a9eff;
+    }
+
+    .timeline-item {
+      margin-bottom: 1.8rem;
+      padding: 0.5rem;
+      border-radius: 10px;
+      transition: background 0.2s ease;
+    }
+    .timeline-item:hover {
+      background: rgba(255,255,255,0.02);
+    }
+    .timeline-item .title {
+      font-weight: 700;
+      color: #c7dfff;
+      font-size: 1.2rem;
+    }
+    .timeline-item .sub {
+      color: #8aa9ff;
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .timeline-item .desc {
+      margin-top: 0.4rem;
+      padding-left: 1rem;
+      border-left: 3px solid #2f4575;
+      color: #b5c9f0;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #080c18;
+      border-top: 1px solid #253153;
+      margin-top: 3rem;
+      color: #7f92b0;
+      font-size: 0.9rem;
+      animation: fadeIn 1.5s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 600px) {
+      h1 { font-size: 2.5rem; }
+      .typing-container { font-size: 1.2rem; min-height: auto; }
+      .typing {
+        white-space: normal;
+        width: auto;
+        border-right: none;
+        animation: none;
+        text-align: center;
+      }
+      .container { padding: 1rem; }
+    }
+  </style>
 </head>
-
 <body>
-
-<header>
-    <h1>Muhammad Abozied</h1>
-    <div class="typing">SOC Analyst | Incident Responder | Blue Team</div>
-    <br>
-    <a href="Muhammad ABOZIED.pdf" class="cv-btn" download>Download CV</a>
-</header>
-
-<div class="section">
-    <h2>About Me</h2>
-    <div class="card">
-        Cybersecurity analyst specialized in SIEM monitoring, 
-        threat detection, log analysis, and incident response.
+  <header>
+    <h1>Muhammad ABOZIED</h1>
+    <div class="typing-container">
+      <span class="typing">SOC Analyst | Cybersecurity Instructor | Incident Response</span>
     </div>
-</div>
+    <a href="#" class="btn-cv" onclick="alert('Please replace this with your actual CV PDF link.'); return false;">
+      <i class="fas fa-download"></i> Download CV (PDF)
+    </a>
+  </header>
 
-<div class="section">
-    <h2>Technical Skills</h2>
-    <div class="card">
-        <ul>
-            <li>✔ Incident Response</li>
-            <li>✔ SIEM Monitoring</li>
-            <li>✔ Alert Triaging</li>
-            <li>✔ Digital Forensics</li>
-            <li>✔ Network Security</li>
+  <main class="container">
+    <!-- About Me -->
+    <section>
+      <h2><i class="fas fa-user-shield" style="margin-right: 10px;"></i> About Me</h2>
+      <div class="card" style="grid-column: 1/-1;">
+        <p style="font-size: 1.1rem;">🔹 I am a Cybersecurity Incident Response Analyst with hands-on experience in SOC operations, security monitoring, and threat detection. I specialize in analyzing security events, investigating alerts, and responding to incidents to protect organizational assets. With practical experience across SIEM monitoring, vulnerability assessment, network security, and digital forensics, I continuously work on improving my detection and response capabilities. As a Cybersecurity Instructor, I am passionate about sharing knowledge and mentoring the next generation of security professionals. I aim to contribute to a proactive SOC team where I can enhance my incident response effectiveness and threat analysis skills while fostering a culture of security awareness.</p>
+      </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section>
+      <h2><i class="fas fa-microchip"></i> Technical Skills</h2>
+      <div class="card-grid">
+        <!-- Incident Response & SOC -->
+        <div class="card">
+          <h3><i class="fas fa-shield-halved"></i> Incident Response & SOC</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Incident Response</span>
+            <span class="skill-tag">Alert Triaging</span>
+            <span class="skill-tag">Threat Detection</span>
+            <span class="skill-tag">Log Analysis</span>
+            <span class="skill-tag">Security Monitoring</span>
+            <span class="skill-tag">Digital Forensics</span>
+            <span class="skill-tag">Root Cause Analysis</span>
+            <span class="skill-tag">Playbook Development</span>
+          </div>
+        </div>
+        <!-- SIEM & Monitoring -->
+        <div class="card">
+          <h3><i class="fas fa-chart-line"></i> SIEM & Monitoring</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">SIEM Monitoring</span>
+            <span class="skill-tag">Windows Event Logs</span>
+            <span class="skill-tag">Network Traffic Analysis</span>
+            <span class="skill-tag">EDR Solutions</span>
+            <span class="skill-tag">Splunk / ELK</span>
+          </div>
+        </div>
+        <!-- Networking -->
+        <div class="card">
+          <h3><i class="fas fa-network-wired"></i> Networking</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Network Infrastructure</span>
+            <span class="skill-tag">Firewall (Fortinet, ASA)</span>
+            <span class="skill-tag">VoIP & Wireless</span>
+            <span class="skill-tag">TCP/IP, DNS, HTTP/S</span>
+          </div>
+        </div>
+        <!-- Tools & Instruction -->
+        <div class="card">
+          <h3><i class="fas fa-tools"></i> Tools & Instruction</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">FortiGate</span>
+            <span class="skill-tag">FortiManager</span>
+            <span class="skill-tag">Wireshark</span>
+            <span class="skill-tag">Nmap</span>
+            <span class="skill-tag">Linux (Red Hat)</span>
+            <span class="skill-tag">Windows Server 2019</span>
+            <span class="skill-tag">Volatility (Forensics)</span>
+            <span class="skill-tag">Training & Mentoring</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section>
+      <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+      <div class="card">
+        <div class="timeline-item">
+          <span class="title">🔹 Cyber Security Incident Response Analyst</span>
+          <span class="sub">DEPI & MCIT (Dec 2025 – Present)</span>
+          <div class="desc">
+            - Monitor security events and analyze alerts in real-time.<br>
+            - Lead incident response efforts, including containment, eradication, and recovery.<br>
+            - Perform root cause analysis and document post-incident findings.<br>
+            - Enhance detection rules and response playbooks to reduce mean time to respond (MTTR).
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="title">🔹 Network & Cyber Security Instructor</span>
+          <span class="sub">Creativa Minia & SATC (Sep 2025 – Present)</span>
+          <div class="desc">
+            - Deliver training on incident handling, SOC operations, and digital forensics.<br>
+            - Guide students through practical scenarios in alert triage and threat hunting.<br>
+            - Develop lab exercises for network security monitoring and incident response.<br>
+            - Mentor aspiring cybersecurity professionals and foster a hands-on learning environment.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="title">🔹 Cyber Security Intern (Best Intern Award)</span>
+          <span class="sub">UneeQ (Oct 2025)</span>
+          <div class="desc">
+            - Assisted in network monitoring and vulnerability assessments.<br>
+            - Participated in threat management and incident simulation exercises.<br>
+            - Contributed to the refinement of incident response procedures.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <span class="title">🔹 Communications & IT Intern</span>
+          <span class="sub">Ministry of Communications and Information Technology (Jul 2025 – Aug 2025)</span>
+          <div class="desc">
+            - Supported network infrastructure and alert triaging.<br>
+            - Gained exposure to data center operations and virtualization.<br>
+            - Assisted in basic incident response tasks under supervision.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications & Training -->
+    <section>
+      <h2><i class="fas fa-certificate"></i> Certifications</h2>
+      <div class="card" style="margin-bottom: 2rem;">
+        <div class="two-col">
+          <div><i class="fas fa-check-circle" style="color:#4facfe;"></i> Certified in Cybersecurity (CC) – ISC2</div>
+          <div><i class="fas fa-check-circle" style="color:#4facfe;"></i> Fortinet Certified Associate in Cybersecurity</div>
+          <div><i class="fas fa-check-circle" style="color:#4facfe;"></i> Advent of Cyber 2025 – TryHackMe</div>
+        </div>
+      </div>
+
+      <h2><i class="fas fa-graduation-cap"></i> Professional Training</h2>
+      <div class="card">
+        <div class="two-col">
+          <span class="badge">SOC Level 1 – TryHackMe</span>
+          <span class="badge">Incident Handling & Response – ITI</span>
+          <span class="badge">Cyber Threat Management – Cisco</span>
+          <span class="badge">SEC450: GSOC Preparation – SANS</span>
+          <span class="badge">Red Hat System Administration</span>
+          <span class="badge">MCSA Windows Server 2019</span>
+          <span class="badge">CCNA</span>
+          <span class="badge">CCNP Enterprise (ENCOR)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTF & Competitive Experience -->
+    <section>
+      <h2><i class="fas fa-flag"></i> CTF & Competitive Experience</h2>
+      <div class="card">
+        <ul class="list-icon">
+          <li><i class="fas fa-trophy" style="color: gold;"></i> <strong>1st Place</strong> – IT-Gate CTF (Blue Team – HellFire_Club Team)</li>
+          <li><i class="fas fa-shield"></i> Egypt National Cybersecurity CTF – Forensics</li>
+          <li><i class="fas fa-shield"></i> Cyber Champions CTF – Forensics & Crypto</li>
+          <li><i class="fas fa-shield"></i> 0xL4ugh CTF – OSINT & Forensics</li>
         </ul>
-    </div>
-</div>
+        <p style="margin-top: 1rem;"><strong>Strong focus areas:</strong> Digital Forensics, Network Monitoring, Cryptography, OSINT</p>
+      </div>
+    </section>
 
-<footer>
-    © 2026 Muhammad Abozied | Cybersecurity Portfolio
-</footer>
+    <!-- Education & Languages -->
+    <section style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+      <div>
+        <h2><i class="fas fa-university"></i> Education</h2>
+        <div class="card">
+          <p><strong>Bachelor’s Degree in Communications and Electronics Engineering</strong><br>Faculty of Engineering – Minya University (2021 – Present)</p>
+        </div>
+      </div>
+      <div>
+        <h2><i class="fas fa-language"></i> Languages</h2>
+        <div class="card">
+          <ul class="list-icon">
+            <li><i class="fas fa-comment"></i> Arabic (Native)</li>
+            <li><i class="fas fa-comment-dots"></i> English (Fluent)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
 
+  <footer>
+    <i class="fas fa-copyright"></i> 2026 Muhammad ABOZIED | Cybersecurity Portfolio <br>
+    <span style="font-size: 0.8rem;">Designed with <i class="fas fa-heart" style="color: #ff4f7e;"></i> for Blue Team</span>
+  </footer>
 </body>
 </html>
