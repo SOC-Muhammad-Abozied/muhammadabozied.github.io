@@ -6,7 +6,6 @@
     <title>Muhammad ABOZIED | CyberRoute Founder & SOC Analyst</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* --- الأساسيات والمظاهر --- */
         :root {
             --primary: #4facfe;
             --secondary: #00f2fe;
@@ -15,7 +14,6 @@
             --text: #e2e8f0;
             --accent: #ff4f7e;
             --transition-slow: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-            --transition-fast: all 0.3s ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -30,13 +28,6 @@
             scroll-behavior: smooth;
         }
 
-        /* تحسين شريط التمرير */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #080c18; }
-        ::-webkit-scrollbar-thumb { background: #2a3a60; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
-
-        /* --- تصميم الـ Sections --- */
         section {
             height: 100vh;
             width: 100%;
@@ -51,21 +42,18 @@
             border-bottom: 1px solid #1a2645;
         }
 
-        .container {
-            max-width: 1100px;
-            width: 100%;
-            z-index: 2;
-        }
+        .container { max-width: 1100px; width: 100%; z-index: 2; }
 
         h2 {
-            font-size: 2.8rem;
-            margin-bottom: 2.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             opacity: 0;
+            transform: translateY(20px);
         }
 
         .card {
@@ -74,158 +62,225 @@
             border-radius: 20px;
             padding: 2rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: var(--transition-fast);
-            position: relative;
             opacity: 0;
+            transform: translateY(30px);
+            transition: 0.5s;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 15px 40px rgba(79, 172, 254, 0.3);
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+
+        .reveal-active h2, .reveal-active .card, .reveal-active .btn-group {
+            opacity: 1;
+            transform: translateY(0);
+            transition: var(--transition-slow);
         }
 
-        .glow-bg {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(79, 172, 254, 0.18) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: 1;
-            animation: driftGlow 15s infinite linear;
-        }
-
-        /* --- Animations --- */
-        @keyframes driftGlow {
-            0% { transform: translate(-20%, -20%) rotate(0deg); }
-            50% { transform: translate(20%, 20%) rotate(180deg); }
-            100% { transform: translate(-20%, -20%) rotate(360deg); }
-        }
-
-        @keyframes profilePulse {
-            0% { box-shadow: 0 0 20px rgba(79, 172, 254, 0.4); }
-            50% { box-shadow: 0 0 50px rgba(79, 172, 254, 0.7); border-color: var(--secondary); }
-            100% { box-shadow: 0 0 20px rgba(79, 172, 254, 0.4); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); filter: blur(5px); }
-            to { opacity: 1; transform: translateY(0); filter: blur(0px); }
-        }
-
-        /* --- تفعيل الحركات --- */
-        .reveal-active h2 { animation: fadeInUp 0.8s forwards; }
-        .reveal-active .card { animation: fadeInUp 1s forwards; }
-
-        /* 1. COVER PAGE */
-        #cover { background: radial-gradient(circle at center, #15203a 0%, #0b0f1a 100%); text-align: center; }
+        /* 1. COVER */
         .cyberroute-logo-cover {
-            max-width: 200px; /* تم تكبير الشعار من 120px إلى 200px */
-            height: auto;
-            border-radius: 12px;
-            padding: 8px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(79, 172, 254, 0.15);
-            transition: var(--transition-fast);
-            filter: drop-shadow(0 0 5px rgba(79, 172, 254, 0.3));
-            animation: fadeInUp 1s forwards;
-            opacity: 0;
-            z-index: 3;
+            max-width: 250px; /* الحجم الكبير المطلوب */
             margin-bottom: 2rem;
+            filter: drop-shadow(0 0 15px rgba(79, 172, 254, 0.6));
+            animation: fadeInUp 1s forwards;
         }
-        .profile-img-front {
-            width: 210px; height: 210px;
+        .profile-img {
+            width: 180px; height: 180px;
             border-radius: 50%;
-            border: 5px solid var(--primary);
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            animation: profilePulse 4s infinite alternate, fadeInUp 1s forwards 0.3s;
-            opacity: 0;
-            z-index: 3;
+            border: 4px solid var(--primary);
+            margin-bottom: 1rem;
         }
-        #cover h1 { font-size: 3.8rem; animation: fadeInUp 1s forwards 0.6s; opacity: 0; }
-        #cover p { animation: fadeInUp 1s forwards 0.9s; opacity: 0; }
 
-        /* 10. CALL TO ACTION & BUTTONS */
+        /* 3. EDUCATION */
+        .uni-logo { max-width: 120px; background: #fff; padding: 5px; border-radius: 8px; }
+
+        /* 4. SKILLS GRID */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .skill-item { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .skill-item i { color: var(--primary); }
+
+        /* 7. PROJECTS */
+        .proj-header { display: flex; justify-content: space-between; align-items: center; }
+        .cyberroute-mini { max-width: 60px; filter: drop-shadow(0 0 5px var(--primary)); }
+
+        /* BUTTONS */
         .btn {
-            padding: 1.2rem 2.5rem;
+            padding: 1rem 2rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1rem;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            transition: var(--transition-fast);
-            opacity: 0;
+            gap: 10px;
+            transition: 0.3s;
         }
-        .btn-primary { background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #000; box-shadow: 0 5px 15px rgba(79,172,254,0.3); }
-        .btn-primary:hover { transform: scale(1.08) translateY(-3px); box-shadow: 0 10px 25px rgba(79, 172, 254, 0.6); }
-
+        .btn-primary { background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #000; }
         .btn-secondary { border: 2px solid var(--primary); color: #fff; }
-        .btn-secondary:hover { background: rgba(79, 172, 254, 0.1); border-color: var(--secondary); transform: translateY(-3px); }
 
-        .reveal-active .btn { animation: fadeInUp 0.8s forwards 0.5s; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* للتجاوب مع الموبايل */
         @media (max-width: 768px) {
-            section { height: auto; min-height: 100vh; scroll-snap-align: none; padding: 5rem 1rem;}
-            body { overflow-y: scroll; scroll-snap-type: none; }
-            .cyberroute-logo-cover { max-width: 150px; } /* حجم متجاوب أصغر قليلاً على الموبايل */
+            section { height: auto; min-height: 100vh; scroll-snap-align: none; padding: 4rem 1rem; }
+            body { scroll-snap-type: none; overflow-y: scroll; }
+            h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <section id="cover" class="reveal-section">
-        <div class="glow-bg" style="top: 10%; left: 10%;"></div>
+    <section class="reveal-section">
         <img src="CyberRoute cover.png" alt="CyberRoute Logo" class="cyberroute-logo-cover">
-        <img src="Muhammad Abozied.png" alt="Muhammad Abozied" class="profile-img-front">
-        <h1>Muhammad ABOZIED</h1>
-        <p style="font-size: 1.6rem; color: var(--primary); letter-spacing: 2px; margin-bottom: 1rem;">SOC Analyst | Cybersecurity Instructor</p>
+        <img src="Muhammad Abozied.png" alt="Muhammad Abozied" class="profile-img">
+        <h1 style="font-size: 2.5rem;">Muhammad ABOZIED</h1>
+        <p style="color: var(--primary); font-size: 1.2rem; margin-top: 10px;">Blue Team Specialist | Cybersecurity Instructor</p>
     </section>
 
-    <section class="reveal-section" id="contact">
-        <div class="glow-bg" style="top: 10%; right: 10%;"></div>
-        <div class="container" style="text-align: center;">
-            <h2>Let's Secure the Future</h2>
-            <p style="margin-bottom: 3rem; font-size: 1.3rem; opacity: 0.9;">Ready to collaborate on a security project or training session?</p>
-            <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
-                
-                <a href="mailto:muhammadabozied3@gmail.com?subject=Inquiry from Portfolio" class="btn btn-primary">
-                    <i class="fas fa-envelope"></i> Contact Me
-                </a>
-                
-                <a href="https://www.linkedin.com/in/muhammadabozied" target="_blank" class="btn btn-secondary">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
+    <section class="reveal-section">
+        <div class="container">
+            <h2>About & USP</h2>
+            <div class="card">
+                <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 1rem;">
+                    I don't just secure networks; I empower the people who use them. 
+                </p>
+                <div style="border-left: 4px solid var(--accent); padding-left: 20px;">
+                    <h4 style="color: var(--accent);">Unique Selling Point:</h4>
+                    <p>The **"Educated Defense"** strategy – combining real-time SOC incident response with professional pedagogical skills to create resilient security cultures, not just firewalls.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="thankyou">
-        <div class="container" style="text-align: center;">
-            <h2>Thank You!</h2>
-            <div style="opacity: 0.5; margin-top: 50px;">
-                <p>Muhammad ABOZIED | <a href="https://www.linkedin.com/in/muhammadabozied" style="color: inherit; text-decoration: none;">linkedin.com/in/muhammadabozied</a></p>
-                <p>Cyber Route © 2026</p>
+    <section class="reveal-section">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="card" style="display: flex; align-items: center; gap: 30px;">
+                <img src="Minia U.png" alt="Minia University" class="uni-logo">
+                <div>
+                    <h3>B.Sc. Communications & Electronics Engineering</h3>
+                    <p style="color: var(--secondary);">Minya University | 2021 - Present</p>
+                    <p>Focused on Network Security and Hardware Verification.</p>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <section class="reveal-section">
+        <div class="container">
+            <h2>Skills & Mastery</h2>
+            <div class="skills-grid">
+                <div class="card">
+                    <h4 style="color: var(--primary); margin-bottom: 1rem;">Technical</h4>
+                    <div class="skill-item"><i class="fas fa-terminal"></i> SOC Ops (SIEM/EDR)</div>
+                    <div class="skill-item"><i class="fas fa-search"></i> Digital Forensics</div>
+                    <div class="skill-item"><i class="fas fa-network-wired"></i> Network Security</div>
+                </div>
+                <div class="card">
+                    <h4 style="color: var(--primary); margin-bottom: 1rem;">Soft Skills</h4>
+                    <div class="skill-item"><i class="fas fa-comments"></i> Technical Instruction</div>
+                    <div class="skill-item"><i class="fas fa-brain"></i> Analytical Thinking</div>
+                </div>
+                <div class="card">
+                    <h4 style="color: var(--primary); margin-bottom: 1rem;">Languages</h4>
+                    <div class="skill-item"><i class="fas fa-globe"></i> Arabic (Native)</div>
+                    <div class="skill-item"><i class="fas fa-globe-americas"></i> English (Professional)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reveal-section">
+        <div class="container">
+            <h2>Professional Path</h2>
+            <div class="card">
+                <div style="margin-bottom: 1.5rem;">
+                    <h3 style="color: var(--primary);">SOC Analyst & Incident Responder</h3>
+                    <p>DEPI & MCIT | 2025 - Present</p>
+                </div>
+                <hr style="opacity: 0.1; margin: 15px 0;">
+                <div>
+                    <h3 style="color: var(--primary);">Cybersecurity Instructor</h3>
+                    <p>Creativa Minia & SATC | 2025 - Present</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reveal-section">
+        <div class="container">
+            <h2>Offered Services</h2>
+            <div class="skills-grid">
+                <div class="card" style="text-align: center;">
+                    <i class="fas fa-shield-virus" style="font-size: 2.5rem; color: var(--primary);"></i>
+                    <h3>SOC Consulting</h3>
+                    <p>Building secure operations for businesses.</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <i class="fas fa-graduation-cap" style="font-size: 2.5rem; color: var(--primary);"></i>
+                    <h3>Workshops</h3>
+                    <p>Tailored cybersecurity training modules.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reveal-section">
+        <div class="container">
+            <h2>Key Projects</h2>
+            <div class="card">
+                <div class="proj-header">
+                    <h3>Cyber Route Academy</h3>
+                    <img src="CyberRoute cover.png" class="cyberroute-mini">
+                </div>
+                <p style="margin-top: 10px;">Founding a platform for specialized cybersecurity career pathways and branding.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="reveal-section">
+        <div class="container">
+            <h2>Achievements</h2>
+            <div class="card">
+                <p><i class="fas fa-trophy" style="color: gold;"></i> <strong>1st Place</strong> - IT-Gate CTF (Blue Team Track)</p>
+                <p style="margin-top: 1rem;"><i class="fas fa-award" style="color: var(--accent);"></i> <strong>Best Intern</strong> - UneeQ Digital Forensics Internship</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="reveal-section">
+        <div class="container">
+            <h2>Certifications</h2>
+            <div class="card" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <span style="background: #1a2942; padding: 10px 20px; border-radius: 30px; border: 1px solid var(--primary);">ISC2 Certified in Cybersecurity</span>
+                <span style="background: #1a2942; padding: 10px 20px; border-radius: 30px; border: 1px solid var(--primary);">Fortinet NSE Associate</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="reveal-section" id="contact">
+        <div class="container" style="text-align: center;">
+            <h2>Let's Connect</h2>
+            <p style="margin-bottom: 2rem;">Ready for the next secure step?</p>
+            <div class="btn-group">
+                <a href="mailto:muhammadabozied3@gmail.com?subject=Portfolio Inquiry" class="btn btn-primary"><i class="fas fa-envelope"></i> Contact Me</a>
+                <a href="https://www.linkedin.com/in/muhammadabozied" target="_blank" class="btn btn-secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="reveal-section">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 4rem;">Thank You</h2>
+            <p style="opacity: 0.6;">Muhammad ABOZIED | Cyber Route © 2026</p>
+            <p style="margin-top: 20px; font-style: italic; color: var(--primary);">"Securing the Digital Route, Step by Step."</p>
         </div>
     </section>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('.reveal-section, #thankyou');
-            const observerOptions = { threshold: 0.2 };
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('reveal-active');
-                    }
-                });
-            }, observerOptions);
-            sections.forEach(section => observer.observe(section));
-        });
+        const sections = document.querySelectorAll('.reveal-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('reveal-active');
+            });
+        }, { threshold: 0.3 });
+        sections.forEach(s => observer.observe(s));
     </script>
 </body>
 </html>
