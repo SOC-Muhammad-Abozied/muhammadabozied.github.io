@@ -6,6 +6,7 @@
     <title>Muhammad ABOZIED | CyberRoute Founder & SOC Analyst</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* --- الأساسيات والمظاهر --- */
         :root {
             --primary: #4facfe;
             --secondary: #00f2fe;
@@ -27,6 +28,11 @@
             height: 100vh;
             scroll-behavior: smooth;
         }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #080c18; }
+        ::-webkit-scrollbar-thumb { background: #2a3a60; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
         section {
             height: 100vh;
@@ -67,24 +73,27 @@
             transition: 0.5s;
         }
 
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+
         .reveal-active h2, .reveal-active .card, .reveal-active .btn-group {
             opacity: 1;
             transform: translateY(0);
             transition: var(--transition-slow);
         }
 
-        /* 1. COVER */
+        /* 1. COVER - تكبير الصور */
         .cyberroute-logo-cover {
-            max-width: 250px;
+            max-width: 280px; /* الحجم الجديد الأكبر للشعار الرسمي */
             margin-bottom: 2rem;
             filter: drop-shadow(0 0 15px rgba(79, 172, 254, 0.6));
             animation: fadeInUp 1s forwards;
         }
         .profile-img {
-            width: 180px; height: 180px;
+            width: 240px; height: 240px; /* الحجم الجديد الأكبر لصورتك */
             border-radius: 50%;
             border: 4px solid var(--primary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            object-fit: cover;
         }
 
         /* 3. EDUCATION */
@@ -92,12 +101,17 @@
 
         /* 4. SKILLS GRID */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-        .skill-item { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .skill-item { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 1.1rem; }
         .skill-item i { color: var(--primary); }
 
-        /* 7. PROJECTS */
-        .proj-header { display: flex; justify-content: space-between; align-items: center; }
-        .cyberroute-mini { max-width: 60px; filter: drop-shadow(0 0 5px var(--primary)); }
+        /* 7. PROJECTS - تكبير الميني لوجو وتعديل التنسيق */
+        .proj-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .cyberroute-mini {
+            max-width: 80px; /* حجم أكبر قليلاً للميني لوجو */
+            filter: drop-shadow(0 0 5px var(--primary));
+            transition: 0.3s;
+        }
+        .cyberroute-mini:hover { transform: scale(1.1) rotate(5deg); }
 
         .btn {
             padding: 1rem 2rem;
@@ -118,6 +132,8 @@
             section { height: auto; min-height: 100vh; scroll-snap-align: none; padding: 4rem 1rem; }
             body { scroll-snap-type: none; overflow-y: scroll; }
             h2 { font-size: 1.8rem; }
+            .cyberroute-logo-cover { max-width: 220px; }
+            .profile-img { width: 180px; height: 180px; }
         }
     </style>
 </head>
@@ -126,8 +142,8 @@
     <section class="reveal-section">
         <img src="CyberRoute cover.png" alt="CyberRoute Logo" class="cyberroute-logo-cover">
         <img src="Muhammad Abozied.png" alt="Muhammad Abozied" class="profile-img">
-        <h1 style="font-size: 2.5rem;">Muhammad ABOZIED</h1>
-        <p style="color: var(--primary); font-size: 1.2rem; margin-top: 10px;">Blue Team Specialist | Cybersecurity Instructor</p>
+        <h1 style="font-size: 2.5rem; letter-spacing: 1px;">Muhammad ABOZIED</h1>
+        <p style="color: var(--primary); font-size: 1.25rem; margin-top: 10px;">Blue Team Specialist | Cybersecurity Instructor</p>
     </section>
 
     <section class="reveal-section">
@@ -154,7 +170,7 @@
                 <div>
                     <h3>B.Sc. Communications & Electronics Engineering</h3>
                     <p style="color: var(--secondary);">Minya University | 2021 - Present</p>
-                    <p>Specializing in Network Infrastructure and Digital Security.</p>
+                    <p>Specializing in Network Security and Hardware Verification.</p>
                 </div>
             </div>
         </div>
@@ -186,7 +202,7 @@
 
     <section class="reveal-section">
         <div class="container">
-            <h2>Professional Experience</h2>
+            <h2>Professional Path</h2>
             <div class="card">
                 <div style="margin-bottom: 1.5rem;">
                     <h3 style="color: var(--primary);">SOC Analyst & Incident Responder</h3>
@@ -221,13 +237,27 @@
 
     <section class="reveal-section">
         <div class="container">
-            <h2>Featured Projects</h2>
-            <div class="card">
-                <div class="proj-header">
-                    <h3>Cyber Route Academy</h3>
-                    <img src="CyberRoute cover.png" class="cyberroute-mini">
+            <h2>Projects</h2> <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+                <div class="card">
+                    <div class="proj-header">
+                        <h3 style="color: var(--secondary);">Graduation Project</h3>
+                        <i class="fas fa-university" style="font-size: 2rem; color: var(--primary);"></i>
+                    </div>
+                    <div style="border-left: 3px solid var(--accent); padding-left: 20px; margin-top: 10px;">
+                        <h4 style="color: var(--accent);">Next-Gen Enterprise Secure Network</h4>
+                        <p style="opacity: 0.9; margin-top: 5px; line-height: 1.6;">
+                            Designing and implementing a secure corporate infrastructure integrating <strong style="color: var(--secondary);">Cloud Security</strong>, a localized <strong style="color: var(--secondary);">Web Server</strong> with advanced hardening, and <strong style="color: var(--secondary);">Real-Time Attacks Monitoring</strong> for preemptive threat detection.
+                        </p>
+                    </div>
                 </div>
-                <p style="margin-top: 1rem; opacity: 0.9;">Leading a digital platform for cybersecurity training, personal branding, and Blue Team skill development.</p>
+                
+                <div class="card">
+                    <div class="proj-header">
+                        <h3 style="color: var(--secondary);">Cyber Route Academy Branding</h3>
+                        <img src="CyberRoute cover.png" alt="CyberRoute" class="cyberroute-mini">
+                    </div>
+                    <p style="margin-top: 1rem; opacity: 0.9;">Leading a digital platform for cybersecurity training, personal branding, and Blue Team skill development.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -254,9 +284,10 @@
     </section>
 
     <section class="reveal-section" id="contact">
+        <div class="glow-bg" style="top: 10%; right: 10%;"></div>
         <div class="container" style="text-align: center;">
-            <h2>Get In Touch</h2>
-            <p style="margin-bottom: 2.5rem; font-size: 1.2rem;">Ready to collaborate on a security project or training session?</p>
+            <h2>Let's Secure the Future</h2>
+            <p style="margin-bottom: 2.5rem; font-size: 1.25rem;">Ready to collaborate on a security project or training session?</p>
             <div class="btn-group">
                 <a href="mailto:muhammadabozied3@gmail.com?subject=Inquiry from Portfolio" class="btn btn-primary"><i class="fas fa-envelope"></i> Contact Me</a>
                 <a href="https://www.linkedin.com/in/muhammadabozied" target="_blank" class="btn btn-secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
