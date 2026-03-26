@@ -28,10 +28,6 @@
             scroll-behavior: smooth;
         }
 
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #080c18; }
-        ::-webkit-scrollbar-thumb { background: #2a3a60; border-radius: 10px; }
-
         section {
             height: 100vh;
             width: 100%;
@@ -72,52 +68,22 @@
         }
 
         .reveal-active h2, .reveal-active .card, .reveal-active .btn-group {
-            opacity: 1;
-            transform: translateY(0);
-            transition: var(--transition-slow);
+            opacity: 1; transform: translateY(0); transition: var(--transition-slow);
         }
 
-        /* 1. COVER */
-        .cyberroute-logo-cover {
-            max-width: 160px;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 0 10px rgba(79, 172, 254, 0.4));
-        }
-        .profile-img {
-            width: 240px; height: 240px;
-            border-radius: 50%;
-            border: 4px solid var(--primary);
-            margin-bottom: 1rem;
-            object-fit: cover;
-        }
-
-        /* 4. SKILLS */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+        .cyberroute-logo-cover { max-width: 160px; margin-bottom: 1rem; filter: drop-shadow(0 0 10px rgba(79, 172, 254, 0.4)); }
+        .profile-img { width: 240px; height: 240px; border-radius: 50%; border: 4px solid var(--primary); margin-bottom: 1rem; object-fit: cover; }
         .badge { background: #1a2942; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--primary); font-size: 0.85rem; margin: 4px; display: inline-block; }
-
-        /* Experience Scroll */
         .exp-scroll { max-height: 60vh; overflow-y: auto; padding-right: 10px; }
-
-        /* 7. PROJECTS */
         .cyberroute-mini { max-width: 150px; filter: drop-shadow(0 0 8px var(--primary)); }
 
-        .btn {
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
-        }
+        .btn { padding: 0.8rem 1.8rem; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; }
         .btn-primary { background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #000; }
         .btn-secondary { border: 2px solid var(--primary); color: #fff; }
 
         @media (max-width: 768px) {
             section { height: auto; min-height: 100vh; scroll-snap-align: none; padding: 3rem 1rem; }
             body { scroll-snap-type: none; overflow-y: scroll; }
-            h2 { font-size: 1.6rem; }
         }
     </style>
 </head>
@@ -127,19 +93,20 @@
         <img src="CyberRoute cover.png" alt="CyberRoute Logo" class="cyberroute-logo-cover">
         <img src="Muhammad Abozied.png" alt="Muhammad Abozied" class="profile-img">
         <h1 style="font-size: 2.2rem;">Muhammad ABOZIED</h1>
-        <p style="color: var(--primary); font-size: 1.1rem; margin-top: 5px;">SOC Analyst | Incident Responder | Blue Teamer</p>
-        <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 10px;"><i class="fas fa-map-marker-alt"></i> Cairo, Egypt | (+20) 1016178565</p>
+        <p style="color: var(--primary); font-size: 1.2rem; margin-top: 5px; font-weight: bold;">Founder of CyberRoute</p>
+        <p style="color: var(--text); opacity: 0.9; font-size: 1rem;">SOC Analyst | Incident Responder | Instructor</p>
     </section>
 
     <section class="reveal-section">
         <div class="container">
-            <h2>Professional Objective</h2>
+            <h2>About & Vision</h2>
             <div class="card">
-                <p style="font-size: 1.1rem; line-height: 1.7;">
-                    Experienced SOC Analyst specialized in monitoring security events, investigating alerts, and responding to incidents. 
-                    Strong skills in <span style="color: var(--primary);">SIEM monitoring, log analysis, and threat detection</span>. 
-                    I combine technical vigilance with an "Educated Defense" strategy to enhance proactive incident response.
+                <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1rem;">
+                    As the **Founder of CyberRoute**, I am dedicated to bridging the gap between advanced security operations and professional education. 
                 </p>
+                <div style="border-left: 4px solid var(--accent); padding-left: 20px;">
+                    <p>I leverage my experience as a SOC Analyst to build "Educated Defense" frameworks, ensuring that cybersecurity knowledge is accessible, practical, and resilient.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -151,8 +118,8 @@
                 <img src="Minia U.png" alt="Minia University" style="max-width: 100px; background: #fff; padding: 5px; border-radius: 10px;">
                 <div>
                     <h3>Communications & Electronics Engineering</h3>
-                    <p style="color: var(--secondary); font-weight: bold;">Faculty of Engineering, Minya University</p>
-                    <p>Major Focus: Digital Design Verification & Network Security</p>
+                    <p style="color: var(--secondary); font-weight: bold;">Minya University</p>
+                    <p>Building the technical foundation for cybersecurity leadership.</p>
                 </div>
             </div>
         </div>
@@ -160,23 +127,17 @@
 
     <section class="reveal-section">
         <div class="container">
-            <h2>Skills & Mastery</h2>
-            <div class="skills-grid">
+            <h2>Skills Mastery</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
                 <div class="card">
-                    <h4 style="color: var(--primary); margin-bottom: 0.8rem;">Technical</h4>
+                    <h4 style="color: var(--primary); margin-bottom: 0.8rem;">Core Security</h4>
                     <span class="badge">Incident Response</span> <span class="badge">SIEM</span>
-                    <span class="badge">Network Monitoring</span> <span class="badge">Digital Forensics</span>
-                    <span class="badge">Alert Triaging</span> <span class="badge">Vulnerability Assessment</span>
+                    <span class="badge">Digital Forensics</span> <span class="badge">Threat Hunting</span>
                 </div>
                 <div class="card">
-                    <h4 style="color: var(--primary); margin-bottom: 0.8rem;">Professional</h4>
-                    <span class="badge">Technical Instruction</span> <span class="badge">Problem Solving</span>
-                    <span class="badge">Team Collaboration</span> <span class="badge">Communication</span>
-                </div>
-                <div class="card">
-                    <h4 style="color: var(--primary); margin-bottom: 0.8rem;">Languages</h4>
-                    <p><b>Arabic:</b> Native</p>
-                    <p><b>English:</b> Fluent / Professional</p>
+                    <h4 style="color: var(--primary); margin-bottom: 0.8rem;">Leadership</h4>
+                    <span class="badge">Founder</span> <span class="badge">Strategic Planning</span>
+                    <span class="badge">Curriculum Design</span> <span class="badge">Mentorship</span>
                 </div>
             </div>
         </div>
@@ -186,18 +147,18 @@
         <div class="container">
             <h2>Experience</h2>
             <div class="exp-scroll">
-                <div class="card" style="margin-bottom: 10px;">
-                    <h4 style="color: var(--primary);">Cyber Security Incident Response Analyst @ DEPI & MCIT</h4>
-                    <p style="font-size: 0.85rem; opacity: 0.7;">Sep 2021 – Present</p>
-                    <p>Specializing in incident response and security operations field.</p>
+                <div class="card" style="margin-bottom: 10px; border-left: 5px solid var(--accent);">
+                    <h4 style="color: var(--accent);">Founder & Lead Instructor</h4>
+                    <p style="font-weight: bold;">CyberRoute Academy | 2025 - Present</p>
+                    <p>Establishing a premier cybersecurity training route and personal brand for SOC excellence.</p>
                 </div>
                 <div class="card" style="margin-bottom: 10px;">
-                    <h4 style="color: var(--primary);">Network & Cyber Security Instructor @ Creativa Minia & SATC</h4>
-                    <p>Training students on SOC operations, incident handling, and network security.</p>
+                    <h4 style="color: var(--primary);">SOC Analyst @ DEPI & MCIT</h4>
+                    <p>Monitoring security events and investigating alerts to protect organizational assets.</p>
                 </div>
                 <div class="card" style="margin-bottom: 10px;">
-                    <h4 style="color: var(--primary);">Cyber Security Intern @ UneeQ</h4>
-                    <p>Titled <b>"Best Intern"</b>. Managed network monitoring and vulnerability scanning.</p>
+                    <h4 style="color: var(--primary);">Network Security Instructor @ SATC</h4>
+                    <p>Training students on fundamentals and advanced incident handling.</p>
                 </div>
             </div>
         </div>
@@ -205,17 +166,17 @@
 
     <section class="reveal-section">
         <div class="container">
-            <h2>Expert Services</h2>
-            <div class="skills-grid">
+            <h2>Services</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px;">
                 <div class="card" style="text-align: center;">
-                    <i class="fas fa-user-shield" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 10px;"></i>
-                    <h3>SOC Operations</h3>
-                    <p>Consulting on SIEM monitoring & alert management.</p>
+                    <i class="fas fa-route" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 10px;"></i>
+                    <h3>CyberRoute Consulting</h3>
+                    <p>Strategic security roadmaps for teams and individuals.</p>
                 </div>
                 <div class="card" style="text-align: center;">
-                    <i class="fas fa-chalkboard-teacher" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 10px;"></i>
-                    <h3>Cyber Training</h3>
-                    <p>Professional workshops for incident handling.</p>
+                    <i class="fas fa-shield-alt" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 10px;"></i>
+                    <h3>Enterprise Defense</h3>
+                    <p>SOC operations and incident response optimization.</p>
                 </div>
             </div>
         </div>
@@ -223,29 +184,27 @@
 
     <section class="reveal-section">
         <div class="container">
-            <h2>Projects</h2>
-            <div style="display: grid; grid-template-columns: 1fr; gap: 15px;">
-                <div class="card">
-                    <h3 style="color: var(--secondary);">Graduation Project: Next-Gen Enterprise Secure Network</h3>
-                    <p>Integrated Cloud security, Hardened Web Server, and Real-Time Attack Monitoring.</p>
-                </div>
-                <div class="card">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <h3 style="color: var(--secondary);">Cyber Route Academy</h3>
-                        <img src="CyberRoute cover.png" class="cyberroute-mini">
-                    </div>
+            <h2>Key Projects</h2>
+            <div class="card" style="margin-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3>CyberRoute Academy Branding</h3>
+                    <img src="CyberRoute cover.png" class="cyberroute-mini">
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="reveal-section">
-        <div class="container">
-            <h2>Capture The Flag (CTF)</h2>
             <div class="card">
-                <p><i class="fas fa-trophy" style="color: gold;"></i> <b>1st Place</b> - IT-Gate CTF Blue Team [HellFire_Club Team]</p>
-                <p style="margin-top: 10px;"><i class="fas fa-medal" style="color: silver;"></i> <b>Finalist</b> - ZINAD CTF Cyber Champions</p>
-                <p style="margin-top: 10px;"><i class="fas fa-flag" style="color: var(--primary);"></i> <b>Forensics Specialist</b> - Egypt National Cybersecurity CTF</p>
+                <h3>Next-Gen Enterprise Secure Network</h3>
+                <p>Graduation project featuring real-time monitoring and cloud-hardened infrastructure.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="reveal-section">
+        <div class="container">
+            <h2>Achievements</h2>
+            <div class="card">
+                <p><i class="fas fa-trophy" style="color: gold;"></i> <b>1st Place</b> - IT-Gate CTF (Blue Team Track)</p>
+                <p style="margin-top: 10px;"><i class="fas fa-star" style="color: var(--accent);"></i> <b>Best Intern</b> - UneeQ Internship</p>
+                <p style="margin-top: 10px;"><i class="fas fa-flag"></i> <b>Finalist</b> - Egypt National Cybersecurity CTF</p>
             </div>
         </div>
     </section>
@@ -254,38 +213,29 @@
         <div class="container">
             <h2>Certifications</h2>
             <div class="card" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-                <span class="badge">ISC2 Certified in Cybersecurity (CC)</span>
-                <span class="badge">Fortinet Certified Associate (FCA)</span>
-                <span class="badge">TryHackMe Advent of Cyber 2025</span>
-                <span class="badge">FCA-FortiGate 7.4 Operator</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="reveal-section">
-        <div class="container">
-            <h2>Professional Training</h2>
-            <div class="exp-scroll">
-                <div class="card" style="margin-bottom: 8px;"><b>SEC450 GSOC Prep</b> - Netriders Academy & SANS</div>
-                <div class="card" style="margin-bottom: 8px;"><b>Multivendor-Firewall</b> - NTI (Cisco ASA, FortiGate)</div>
-                <div class="card" style="margin-bottom: 8px;"><b>Incident Handling Professional</b> - ITI Mahara-Tech</div>
-                <div class="card" style="margin-bottom: 8px;"><b>CCNP Enterprise & CCNA</b> - Brains Academy</div>
-                <div class="card" style="margin-bottom: 8px;"><b>Red Hat System Admin</b> - Mahara-Tech</div>
+                <span class="badge">ISC2 Certified in Cybersecurity</span>
+                <span class="badge">Fortinet Certified Associate</span>
+                <span class="badge">SANS GSOC Prep</span>
             </div>
         </div>
     </section>
 
     <section class="reveal-section">
         <div class="container" style="text-align: center;">
-            <h2>Contact & Let's Secure</h2>
-            <div class="btn-group" style="margin-top: 1rem;">
-                <a href="mailto:muhammadabozied3@gmail.com?subject=Inquiry" class="btn btn-primary"><i class="fas fa-envelope"></i> Email Me</a>
+            <h2>Let's Collaborate</h2>
+            <p style="margin-bottom: 2rem;">As a Founder and Specialist, I'm ready to take your security to the next level.</p>
+            <div class="btn-group">
+                <a href="mailto:muhammadabozied3@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Contact Founder</a>
                 <a href="https://www.linkedin.com/in/muhammadabozied" target="_blank" class="btn btn-secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
-            <div style="margin-top: 4rem; opacity: 0.5;">
-                <p>Muhammad ABOZIED | Cyber Route © 2026</p>
-                <p style="font-style: italic;">"Securing the Digital Route, Step by Step."</p>
-            </div>
+        </div>
+    </section>
+
+    <section class="reveal-section">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 4rem;">Thank You</h2>
+            <p>Muhammad ABOZIED | CyberRoute © 2026</p>
+            <p style="margin-top: 20px; font-style: italic; color: var(--primary);">"The Route to Security Starts Here."</p>
         </div>
     </section>
 
