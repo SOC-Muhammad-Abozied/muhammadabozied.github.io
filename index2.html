@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad ABOZIED | SOC Analyst & Instructor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4facfe;
+            --secondary: #00f2fe;
+            --bg-dark: #0b0f1a;
+            --card-bg: rgba(18, 25, 45, 0.9);
+            --text-main: #e2e8f0;
+            --text-dim: #94a3b8;
+            --accent: #38bdf8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- Hero Section --- */
+        #home {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #16203a 0%, #0b0f1a 100%);
+            position: relative;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            background: linear-gradient(135deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .typing-text {
+            font-size: 1.5rem;
+            color: var(--accent);
+            border-right: 3px solid var(--accent);
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 3.5s steps(40) forwards, blink 0.8s infinite;
+        }
+
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink { 50% { border-color: transparent } }
+
+        /* --- Layout --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 5rem 1.5rem; }
+        section { margin-bottom: 2rem; }
+        h2 { 
+            font-size: 2rem; margin-bottom: 2.5rem; color: var(--primary); 
+            display: flex; align-items: center; gap: 15px;
+        }
+        h2::after { content: ''; height: 2px; flex: 1; background: linear-gradient(90deg, var(--primary), transparent); }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #2a3a60;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: 0.3s;
+            height: 100%;
+        }
+        .card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0, 242, 254, 0.1); }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+
+        /* --- Skills --- */
+        .tag-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem; }
+        .tag { background: #1a2645; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; border: 1px solid #334e7a; }
+
+        /* --- Timeline --- */
+        .timeline-item { border-left: 2px solid var(--primary); padding-left: 20px; margin-bottom: 20px; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -7px; top: 5px; width: 12px; height: 12px; background: var(--secondary); border-radius: 50%; }
+
+        /* --- Contact --- */
+        .social-links { display: flex; gap: 20px; justify-content: center; margin-top: 2rem; }
+        .social-links a { color: var(--text-main); font-size: 1.8rem; transition: 0.3s; }
+        .social-links a:hover { color: var(--primary); transform: scale(1.2); }
+
+        footer { text-align: center; padding: 3rem; border-top: 1px solid #253153; color: var(--text-dim); }
+
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <section id="home">
+        <div class="reveal">
+            <h1>Muhammad ABOZIED</h1>
+            <div style="display: flex; justify-content: center;">
+                <p class="typing-text">SOC Analyst | Cybersecurity Instructor</p>
+            </div>
+            <br>
+            <a href="#" class="tag" style="text-decoration: none; padding: 12px 30px; border-color: var(--primary); color: white;">Download CV <i class="fas fa-download"></i></a>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <section id="about" class="reveal">
+            <h2><i class="fas fa-user-shield"></i> About Me</h2>
+            <div class="card">
+                <p>Cybersecurity professional with expertise in <b>Incident Response</b> and <b>SOC Operations</b>. I specialize in threat detection, log analysis, and digital forensics. Additionally, I am a <b>Cybersecurity Instructor</b>, teaching networking and security fundamentals at SATC and Creativa Minia.</p>
+            </div>
+        </section>
+
+        <section id="skills" class="reveal">
+            <h2><i class="fas fa-code"></i> Technical Skills</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3><i class="fas fa-shield-alt"></i> SOC & IR</h3>
+                    <div class="tag-container">
+                        <span class="tag">Alert Triaging</span> <span class="tag">SIEM (Splunk)</span>
+                        <span class="tag">Threat Hunting</span> <span class="tag">Wireshark</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-network-wired"></i> Networking</h3>
+                    <div class="tag-container">
+                        <span class="tag">CCNA/CCNP</span> <span class="tag">Firewalls (Fortinet)</span>
+                        <span class="tag">Routing & Switching</span> <span class="tag">TCP/IP</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-search"></i> Forensics</h3>
+                    <div class="tag-container">
+                        <span class="tag">Autopsy</span> <span class="tag">Volatility</span>
+                        <span class="tag">FTK Imager</span> <span class="tag">Linux Forensics</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="reveal">
+            <h2><i class="fas fa-briefcase"></i> Experience</h2>
+            <div class="card">
+                <div class="timeline-item">
+                    <h4>Cyber Security Incident Response Analyst</h4>
+                    <small>DEPI & MCIT | 2025 - Present</small>
+                    <p>Real-time alert analysis, incident containment, and root cause documentation.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Cyber Security Instructor</h4>
+                    <small>Creativa Minia & SATC | 2025 - Present</small>
+                    <p>Training students on SOC operations, digital forensics, and network security.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="reveal">
+            <h2><i class="fas fa-project-diagram"></i> Key Projects</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h4>Next-Gen Industrial Network</h4>
+                    <p>Designed a secure site-to-site connectivity model with AI-enhanced security layers.</p>
+                </div>
+                <div class="card">
+                    <h4>Cyber Route Brand</h4>
+                    <p>Created a digital identity and portfolio platform for cybersecurity education.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="certs" class="reveal">
+            <h2><i class="fas fa-certificate"></i> Certifications</h2>
+            <div class="grid-3">
+                <div class="card" style="text-align: center;">
+                    <i class="fas fa-award" style="font-size: 2rem; color: gold;"></i>
+                    <p>Certified in Cybersecurity (CC) - ISC2</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <i class="fas fa-award" style="font-size: 2rem; color: #4facfe;"></i>
+                    <p>Fortinet Certified Associate</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <i class="fas fa-award" style="font-size: 2rem; color: #00f2fe;"></i>
+                    <p>TryHackMe Advent of Cyber '25</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="training" class="reveal">
+            <h2><i class="fas fa-user-graduate"></i> Training</h2>
+            <div class="card">
+                <div class="tag-container">
+                    <span class="tag">SANS SEC450 (GSOC Prep)</span>
+                    <span class="tag">SOC Level 1 - TryHackMe</span>
+                    <span class="tag">Incident Handling - ITI</span>
+                    <span class="tag">Red Hat System Admin</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="ctf" class="reveal">
+            <h2><i class="fas fa-flag"></i> CTF & Competitions</h2>
+            <div class="card">
+                <p><b>1st Place:</b> IT-Gate CTF (Team: HellFire_Club)</p>
+                <p>Active participant in 0xL4ugh CTF, Cyber Champions, and Egypt National CTF.</p>
+            </div>
+        </section>
+
+        <section id="edu" class="reveal">
+            <h2><i class="fas fa-university"></i> Education</h2>
+            <div class="card">
+                <h4>Bachelor’s in Communications & Electronics Engineering</h4>
+                <p>Minya University | 2021 - Present</p>
+            </div>
+        </section>
+
+        <section id="lang" class="reveal">
+            <h2><i class="fas fa-language"></i> Languages</h2>
+            <div class="grid-2">
+                <div class="card"><b>Arabic:</b> Native</div>
+                <div class="card"><b>English:</b> Fluent / Professional</div>
+            </div>
+        </section>
+
+        <section id="contact" class="reveal" style="text-align: center;">
+            <h2><i class="fas fa-envelope"></i> Get In Touch</h2>
+            <p>Ready to secure the future? Let's connect.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Muhammad ABOZIED | Secure Portfolio</p>
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Initial check
+        reveal();
+    </script>
+</body>
+</html>
