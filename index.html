@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad ABOZIED | Cyber Route Portfolio</title>
+    <title>Muhammad ABOZIED | Animated Cyber Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* --- الأساسيات والمظاهر --- */
         :root {
             --primary: #4facfe;
             --secondary: #00f2fe;
@@ -13,6 +14,8 @@
             --card-bg: rgba(18, 25, 45, 0.9);
             --text: #e2e8f0;
             --accent: #ff4f7e;
+            --transition-slow: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            --transition-fast: all 0.3s ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -22,10 +25,19 @@
             background-color: var(--bg-dark);
             color: var(--text);
             overflow-x: hidden;
-            scroll-snap-type: y mandatory; /* نظام الصفحات المتتالية */
+            /* نظام التمرير بالصفحات الكاملة */
+            scroll-snap-type: y mandatory;
             height: 100vh;
+            scroll-behavior: smooth;
         }
 
+        /* تحسين شريط التمرير */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #080c18; }
+        ::-webkit-scrollbar-thumb { background: #2a3a60; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+        /* --- تصميم الـ Sections (الصفحات) --- */
         section {
             height: 100vh;
             width: 100%;
@@ -33,120 +45,202 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 4rem 2rem;
+            padding: 2rem;
             scroll-snap-align: start;
             position: relative;
+            overflow: hidden;
             border-bottom: 1px solid #1a2645;
-        }
-
-        /* Background Effects */
-        .glow-bg {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(79, 172, 254, 0.15) 0%, transparent 70%);
-            z-index: -1;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
         }
 
         .container {
             max-width: 1100px;
             width: 100%;
+            z-index: 2;
         }
 
+        /* عناوين الصفحات مع حركة تظهر من الأسفل */
+        h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0; /* مخفي مبدئياً للحركة */
+        }
+
+        /* --- تصميم الكروت والعناصر العامة --- */
         .card {
             background: var(--card-bg);
             border: 1px solid #2a3a60;
             border-radius: 20px;
             padding: 2rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: var(--transition-fast);
+            position: relative;
+            opacity: 0; /* مخفي مبدئياً للحركة */
         }
 
-        /* 1. Cover Page */
-        #cover { background: linear-gradient(180deg, #0d1225 0%, #0b0f1a 100%); }
-        .profile-img {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            border: 4px solid var(--primary);
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 0 30px rgba(79, 172, 254, 0.5);
+        /* تأثير مضيء عند تمرير الماوس فوق الكارت */
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(79, 172, 254, 0.3);
         }
 
-        /* 4. Skills Grid */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        /* Generic List Styles */
         ul { list-style: none; }
-        li { margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px; }
-        li i { color: var(--primary); }
+        li { margin-bottom: 1rem; display: flex; align-items: center; gap: 12px; font-size: 1.1rem;}
+        li i { color: var(--primary); transition: var(--transition-fast); }
+        li:hover i { transform: scale(1.2) rotate(10deg); color: var(--secondary); }
 
         .badge {
             background: #1a2942;
-            padding: 5px 15px;
-            border-radius: 20px;
+            padding: 6px 18px;
+            border-radius: 30px;
             border: 1px solid var(--primary);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             display: inline-block;
-            margin: 5px;
+            margin: 8px;
+            transition: var(--transition-fast);
+        }
+        .badge:hover { background: var(--primary); color: #000; transform: scale(1.1); }
+
+        /* --- تأثيرات الخلفية المتحركة --- */
+        .glow-bg {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(79, 172, 254, 0.18) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+            animation: driftGlow 15s infinite linear; /* حركة دوران بطيئة خلف العناصر */
         }
 
-        /* Contact Buttons */
+        /* ----------------------------------
+           CSS Keyframes (تعريف الحركات)
+        ---------------------------------- */
+
+        /* حركة دوران التوهج الخلفي */
+        @keyframes driftGlow {
+            0% { transform: translate(-20%, -20%) rotate(0deg); }
+            50% { transform: translate(20%, 20%) rotate(180deg); }
+            100% { transform: translate(-20%, -20%) rotate(360deg); }
+        }
+
+        /* حركة نبض الصورة الشخصية */
+        @keyframes profilePulse {
+            0% { box-shadow: 0 0 20px rgba(79, 172, 254, 0.4); }
+            50% { box-shadow: 0 0 50px rgba(79, 172, 254, 0.7); border-color: var(--secondary); }
+            100% { box-shadow: 0 0 20px rgba(79, 172, 254, 0.4); }
+        }
+
+        /* حركة الظهور الاحترافية من الأسفل */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); filter: blur(5px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0px); }
+        }
+
+        /* ----------------------------------
+           تنسيقات محددة للصفحات وحركاتها
+        ---------------------------------- */
+
+        /* Classes خاصة بالـ JavaScript لتفعيل الحركة عند الوصول إليها */
+        .reveal-active h2 { animation: fadeInUp 0.8s forwards; }
+        .reveal-active .card { animation: fadeInUp 1s forwards; }
+        /* تأخير بسيط للكارت الثاني إذا وجد */
+        .reveal-active .card-2 { animation-delay: 0.3s; }
+        /* تأخير لعناصر القوائم */
+        .reveal-active li { animation: fadeInUp 0.5s forwards; opacity: 0; }
+        .reveal-active li:nth-child(1) { animation-delay: 0.2s; }
+        .reveal-active li:nth-child(2) { animation-delay: 0.3s; }
+        .reveal-active li:nth-child(3) { animation-delay: 0.4s; }
+        .reveal-active li:nth-child(4) { animation-delay: 0.5s; }
+
+
+        /* 1. COVER PAGE - حركات فورية */
+        #cover { background: radial-gradient(circle at center, #15203a 0%, #0b0f1a 100%); }
+        #cover h1 { font-size: 3.8rem; animation: fadeInUp 1s forwards; opacity: 0; }
+        #cover p { animation: fadeInUp 1s forwards 0.3s; opacity: 0; } /* متأخر قليلاً */
+        #cover .badges-container { animation: fadeInUp 1s forwards 0.6s; opacity: 0; }
+
+        .profile-img {
+            width: 230px; height: 230px;
+            border-radius: 50%;
+            border: 5px solid var(--primary);
+            object-fit: cover;
+            margin-bottom: 2rem;
+            animation: profilePulse 4s infinite alternate, fadeInUp 1s forwards; /* نبض + ظهور */
+            opacity: 0;
+            z-index: 2;
+        }
+
+        /* 4. SKILLS GRID */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        /* 10. CALL TO ACTION */
         .btn {
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 1.1rem;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            transition: 0.3s;
+            gap: 12px;
+            transition: var(--transition-fast);
+            opacity: 0; /* للحركة */
         }
-        .btn-primary { background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #000; }
-        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--primary); }
+        .btn-primary { background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #000; box-shadow: 0 5px 15px rgba(79,172,254,0.3); }
+        .btn-primary:hover { transform: scale(1.08) translateY(-3px); box-shadow: 0 10px 25px rgba(79, 172, 254, 0.6); }
 
+        .btn-secondary { border: 2px solid var(--primary); color: #fff; }
+        .btn-secondary:hover { background: rgba(79, 172, 254, 0.1); border-color: var(--secondary); transform: translateY(-3px); }
+
+        .reveal-active .btn { animation: fadeInUp 0.8s forwards 0.5s; }
+
+        /* 11. THANK YOU */
+        #thankyou { background: #080c18; text-align: center; }
+        #thankyou h2 { font-size: 5rem; animation: fadeInUp 1.2s forwards; }
+
+        /* للتجاوب مع الموبايل */
         @media (max-width: 768px) {
             .skills-container { grid-template-columns: 1fr; }
-            section { height: auto; min-height: 100vh; scroll-snap-align: none; }
+            section { height: auto; min-height: 100vh; scroll-snap-align: none; padding: 5rem 1rem;}
             body { overflow-y: scroll; scroll-snap-type: none; }
+            h2 { font-size: 2.2rem; }
+            #cover h1 { font-size: 2.8rem; }
+            #thankyou h2 { font-size: 3.5rem; }
         }
     </style>
 </head>
 <body>
 
     <section id="cover">
-        <div class="glow-bg"></div>
+        <div class="glow-bg" style="top: 10%; left: 10%;"></div>
         <img src="Muhammad Abozied.png" alt="Muhammad Abozied" class="profile-img">
-        <h1 style="font-size: 3.5rem;">Muhammad ABOZIED</h1>
-        <p style="font-size: 1.5rem; color: var(--primary); letter-spacing: 2px;">SOC Analyst | Cybersecurity Instructor</p>
-        <div style="margin-top: 2rem;">
+        <h1>Muhammad ABOZIED</h1>
+        <p style="font-size: 1.6rem; color: var(--primary); letter-spacing: 2px; margin-bottom: 1rem;">SOC Analyst | Cybersecurity Instructor</p>
+        <div class="badges-container">
             <span class="badge">Blue Teamer</span>
             <span class="badge">Incident Responder</span>
             <span class="badge">Cyber Route Founder</span>
         </div>
     </section>
 
-    <section id="about">
+    <section class="reveal-section">
+        <div class="glow-bg" style="bottom: 10%; right: 10%;"></div>
         <div class="container">
             <h2>About & Unique Value</h2>
             <div class="card">
-                <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">
-                    I bridge the gap between complex security operations and professional education. My unique selling point lies in the <strong>"Educated Defense"</strong> approach: I don't just respond to incidents; I build systems and teams that understand the *why* behind the threat.
+                <p style="font-size: 1.25rem; margin-bottom: 1.5rem; line-height: 1.8;">
+                    I bridge the gap between complex security operations and professional education. My unique selling point lies in the <strong style="color: var(--secondary);">"Educated Defense"</strong> approach: I don't just respond to incidents; I build systems and teams that understand the *why* behind the threat.
                 </p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; border-top: 1px solid #2a3a60; padding-top: 20px;">
                     <div>
                         <h4 style="color: var(--secondary);"><i class="fas fa-bolt"></i> Speed of Response</h4>
                         <p>Specialized in reducing MTTR through automated playbooks.</p>
@@ -160,153 +254,196 @@
         </div>
     </section>
 
-    <section id="education">
+    <section class="reveal-section">
         <div class="container">
             <h2>Education</h2>
             <div class="card">
-                <div style="border-left: 3px solid var(--primary); padding-left: 20px;">
-                    <h3>Bachelor of Communications & Electronics Engineering</h3>
-                    <p style="color: var(--secondary);">Minya University | 2021 - Present</p>
-                    <p style="margin-top: 10px;">Focused on hardware security, signal processing, and telecommunications infrastructure.</p>
+                <div style="border-left: 4px solid var(--primary); padding-left: 25px; transition: 0.3s; border-radius: 4px;">
+                    <h3 style="font-size: 1.5rem;">Bachelor of Communications & Electronics Engineering</h3>
+                    <p style="color: var(--secondary); font-size: 1.1rem; margin: 5px 0 15px 0;">Minya University | 2021 - Present</p>
+                    <p style="line-height: 1.7; opacity: 0.8;">Focused on hardware security, signal processing, and telecommunications infrastructure. Merging engineering principles with cyber defense.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills">
+    <section class="reveal-section">
         <div class="container">
             <h2>Technical & Soft Skills</h2>
             <div class="skills-container">
-                <div class="card">
-                    <h3><i class="fas fa-shield-virus"></i> Hard Skills</h3>
+                <div class="card card-1">
+                    <h3 style="margin-bottom: 15px; color: var(--primary);"><i class="fas fa-shield-virus"></i> Hard Skills</h3>
                     <ul>
-                        <li><i class="fas fa-check"></i> SOC Operations</li>
-                        <li><i class="fas fa-check"></i> Digital Forensics</li>
-                        <li><i class="fas fa-check"></i> Malware Analysis</li>
-                        <li><i class="fas fa-check"></i> SIEM (Splunk/ELK)</li>
+                        <li><i class="fas fa-check-circle"></i> SOC Operations</li>
+                        <li><i class="fas fa-check-circle"></i> Digital Forensics</li>
+                        <li><i class="fas fa-check-circle"></i> Malware Analysis</li>
+                        <li><i class="fas fa-check-circle"></i> SIEM (Splunk/ELK)</li>
                     </ul>
                 </div>
-                <div class="card">
-                    <h3><i class="fas fa-users"></i> Soft Skills</h3>
+                <div class="card card-2">
+                    <h3 style="margin-bottom: 15px; color: var(--primary);"><i class="fas fa-users"></i> Soft Skills</h3>
                     <ul>
-                        <li><i class="fas fa-check"></i> Public Speaking</li>
-                        <li><i class="fas fa-check"></i> Technical Writing</li>
-                        <li><i class="fas fa-check"></i> Critical Thinking</li>
-                        <li><i class="fas fa-check"></i> Team Leadership</li>
+                        <li><i class="fas fa-check-circle"></i> Public Speaking</li>
+                        <li><i class="fas fa-check-circle"></i> Technical Writing</li>
+                        <li><i class="fas fa-check-circle"></i> Critical Thinking</li>
+                        <li><i class="fas fa-check-circle"></i> Team Leadership</li>
                     </ul>
                 </div>
-                <div class="card">
-                    <h3><i class="fas fa-language"></i> Languages</h3>
+                <div class="card card-3">
+                    <h3 style="margin-bottom: 15px; color: var(--primary);"><i class="fas fa-language"></i> Languages</h3>
                     <ul>
-                        <li><i class="fas fa-check"></i> Arabic (Native)</li>
-                        <li><i class="fas fa-check"></i> English (Fluent)</li>
+                        <li><i class="fas fa-check-circle"></i> Arabic (Native)</li>
+                        <li><i class="fas fa-check-circle"></i> English (Fluent)</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="experience">
+    <section class="reveal-section">
+        <div class="glow-bg" style="top: -10%; right: -10%;"></div>
         <div class="container">
             <h2>Work Experience</h2>
-            <div class="card" style="max-height: 70vh; overflow-y: auto;">
-                <div style="margin-bottom: 20px;">
+            <div class="card" style="max-height: 70vh; overflow-y: auto; padding-right: 1rem;">
+                <div style="margin-bottom: 25px; position: relative; padding-left: 20px; border-left: 2px solid #2a3a60;">
+                    <i class="fas fa-circle" style="position: absolute; left: -7px; top: 5px; font-size: 0.8rem; color: var(--accent);"></i>
                     <h3 style="color: var(--primary);">Cyber Security Incident Response Analyst</h3>
-                    <p>DEPI & MCIT | 2025 - Present</p>
+                    <p style="font-weight: bold;">DEPI & MCIT | 2025 - Present</p>
                 </div>
-                <div style="margin-bottom: 20px;">
+                <div style="margin-bottom: 25px; position: relative; padding-left: 20px; border-left: 2px solid #2a3a60;">
+                    <i class="fas fa-circle" style="position: absolute; left: -7px; top: 5px; font-size: 0.8rem; color: var(--secondary);"></i>
                     <h3 style="color: var(--primary);">Network & Cybersecurity Instructor</h3>
-                    <p>Creativa Minia & SATC | 2025 - Present</p>
+                    <p style="font-weight: bold;">Creativa Minia & SATC | 2025 - Present</p>
                 </div>
-                <div>
+                <div style="position: relative; padding-left: 20px; border-left: 2px solid #2a3a60;">
+                    <i class="fas fa-circle" style="position: absolute; left: -7px; top: 5px; font-size: 0.8rem; color: #555;"></i>
                     <h3 style="color: var(--primary);">Communications & IT Intern</h3>
-                    <p>Ministry of Communications (MCIT) | 2025</p>
+                    <p style="font-weight: bold;">Ministry of Communications (MCIT) | 2025</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services">
+    <section class="reveal-section">
         <div class="container">
             <h2>Offered Services</h2>
             <div class="skills-container">
-                <div class="card" style="text-align: center;">
-                    <i class="fas fa-search-plus" style="font-size: 3rem; color: var(--primary);"></i>
-                    <h3>SOC Consulting</h3>
-                    <p>Building and optimizing security operations centers for SMEs.</p>
+                <div class="card card-1" style="text-align: center;">
+                    <i class="fas fa-search-plus" style="font-size: 3.5rem; color: var(--primary); margin-bottom: 15px;"></i>
+                    <h3 style="margin-bottom: 10px;">SOC Consulting</h3>
+                    <p style="opacity: 0.8; font-size: 0.95rem;">Building and optimizing security operations centers for SMEs.</p>
                 </div>
-                <div class="card" style="text-align: center;">
-                    <i class="fas fa-graduation-cap" style="font-size: 3rem; color: var(--primary);"></i>
-                    <h3>Custom Training</h3>
-                    <p>Tailored cybersecurity workshops for employees and students.</p>
+                <div class="card card-2" style="text-align: center;">
+                    <i class="fas fa-graduation-cap" style="font-size: 3.5rem; color: var(--primary); margin-bottom: 15px;"></i>
+                    <h3 style="margin-bottom: 10px;">Custom Training</h3>
+                    <p style="opacity: 0.8; font-size: 0.95rem;">Tailored cybersecurity workshops for employees and students.</p>
                 </div>
-                <div class="card" style="text-align: center;">
-                    <i class="fas fa-user-check" style="font-size: 3rem; color: var(--primary);"></i>
-                    <h3>Digital Forensics</h3>
-                    <p>Investigating data breaches and analyzing digital evidence.</p>
+                <div class="card card-3" style="text-align: center;">
+                    <i class="fas fa-user-check" style="font-size: 3.5rem; color: var(--primary); margin-bottom: 15px;"></i>
+                    <h3 style="margin-bottom: 10px;">Digital Forensics</h3>
+                    <p style="opacity: 0.8; font-size: 0.95rem;">Investigating data breaches and analyzing digital evidence.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects">
+    <section class="reveal-section">
         <div class="container">
             <h2>Key Projects</h2>
             <div class="card">
-                <h3>🔹 Next-Gen Secure Industrial Network</h3>
-                <p>Designed a secure inter-site connectivity solution using AI-enhanced security for industrial enterprises.</p>
-                <hr style="margin: 15px 0; border: 0; border-top: 1px dashed #2a3a60;">
-                <h3>🔹 Cyber Route Academy Branding</h3>
-                <p>Developed a full digital identity and learning curriculum for cybersecurity training.</p>
+                <div style="margin-bottom: 15px;">
+                    <h3 style="color: var(--secondary); display: flex; align-items: center; gap: 10px;"><i class="fas fa-project-diagram"></i> Next-Gen Secure Industrial Network</h3>
+                    <p style="margin-top: 5px; opacity: 0.9; padding-left: 30px;">Designed a secure inter-site connectivity solution using AI-enhanced security for industrial enterprises.</p>
+                </div>
+                <hr style="margin: 20px 0; border: 0; border-top: 1px dashed #2a3a60;">
+                <div>
+                    <h3 style="color: var(--secondary); display: flex; align-items: center; gap: 10px;"><i class="fas fa-route"></i> Cyber Route Academy Branding</h3>
+                    <p style="margin-top: 5px; opacity: 0.9; padding-left: 30px;">Developed a full digital identity and learning curriculum for cybersecurity training.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="achievements">
+    <section class="reveal-section">
+        <div class="glow-bg" style="top: 20%; left: -10%;"></div>
         <div class="container">
             <h2>Achievements</h2>
             <div class="card">
                 <ul style="font-size: 1.2rem;">
-                    <li><i class="fas fa-trophy" style="color: gold;"></i> <strong>1st Place</strong> - IT-Gate CTF (Blue Team)</li>
-                    <li><i class="fas fa-award" style="color: var(--secondary);"></i> <strong>Best Intern Award</strong> - UneeQ Internship</li>
-                    <li><i class="fas fa-flag"></i> Finalist at Egypt National Cybersecurity CTF</li>
+                    <li><i class="fas fa-trophy" style="color: gold; font-size: 1.5rem;"></i> <strong>1st Place</strong> - IT-Gate CTF (Blue Team)</li>
+                    <li><i class="fas fa-award" style="color: var(--accent); font-size: 1.5rem;"></i> <strong>Best Intern Award</strong> - UneeQ Internship</li>
+                    <li><i class="fas fa-flag-checkered" style="font-size: 1.5rem;"></i> Finalist at Egypt National Cybersecurity CTF</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section id="certs">
+    <section class="reveal-section">
         <div class="container">
             <h2>Certifications</h2>
-            <div class="card">
-                <div class="badge">ISC2 Certified in Cybersecurity</div>
-                <div class="badge">Fortinet Certified Associate</div>
-                <div class="badge">Cisco Threat Management</div>
-                <div class="badge">SANS GSOC Prep (SEC450)</div>
-                <div class="badge">CCNP Enterprise (ENCOR)</div>
-                <div class="badge">Red Hat System Admin</div>
+            <div class="card" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                <span class="badge">ISC2 Certified in Cybersecurity</span>
+                <span class="badge">Fortinet Certified Associate</span>
+                <span class="badge">Cisco Threat Management</span>
+                <span class="badge">SANS GSOC Prep (SEC450)</span>
+                <span class="badge">CCNP Enterprise (ENCOR)</span>
+                <span class="badge">Red Hat System Admin</span>
             </div>
         </div>
     </section>
 
-    <section id="contact">
+    <section class="reveal-section" id="contact">
+        <div class="glow-bg" style="top: 10%; right: 10%;"></div>
         <div class="container" style="text-align: center;">
             <h2>Let's Secure the Future</h2>
-            <p style="margin-bottom: 2rem; font-size: 1.2rem;">Ready to collaborate on a security project or training session?</p>
-            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+            <p style="margin-bottom: 3rem; font-size: 1.3rem; opacity: 0.9;">Ready to collaborate on a security project or training session?</p>
+            <div style="display: flex; justify-content: center; gap: 25px; flex-wrap: wrap;">
                 <a href="mailto:your-email@example.com" class="btn btn-primary"><i class="fas fa-envelope"></i> Contact Me</a>
-                <a href="https://linkedin.com/in/muhammad-abozied" class="btn" style="border: 1px solid var(--primary); color: white;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://linkedin.com/in/muhammad-abozied" target="_blank" class="btn btn-secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
         </div>
     </section>
 
-    <section id="thankyou" style="background: #080c18;">
-        <h2 style="font-size: 4rem;">Thank You!</h2>
-        <p style="color: var(--primary);">"The best defense is a continuous curiosity."</p>
-        <div style="margin-top: 50px; opacity: 0.5;">
-            <p>Muhammad ABOZIED | Cyber Route © 2026</p>
+    <section id="thankyou">
+        <div class="container">
+            <h2>Thank You!</h2>
+            <p style="color: var(--primary); font-size: 1.5rem; margin-bottom: 2rem;">"The best defense is a continuous curiosity."</p>
+            <div style="opacity: 0.5; margin-top: 50px;">
+                <p>Muhammad ABOZIED | Cyber Route © 2026</p>
+            </div>
         </div>
     </section>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // تحديد العناصر التي نريد مراقبتها
+            const sections = document.querySelectorAll('.reveal-section, #thankyou');
+
+            // إعدادات المراقب (Intersection Observer)
+            const observerOptions = {
+                root: null, // استخدام شاشة العرض كمرجع
+                threshold: 0.2 // ستبدأ الحركة عندما يظهر 20% من القسم
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // إضافة الكلاس الذي يفعل حركة الـ CSS
+                        entry.target.classList.add('reveal-active');
+                        // نوقف مراقبة القسم بعد ظهوره لمرة واحدة (اختياري)
+                        // observer.unobserve(entry.target);
+                    } else {
+                        // اختياري: إزالة الكلاس عند الخروج لإعادة الحركة (يجعل التصميم مزعجاً قليلاً في هذا النظام)
+                        // entry.target.classList.remove('reveal-active');
+                    }
+                });
+            }, observerOptions);
+
+            // بدء مراقبة كل قسم
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
