@@ -24,7 +24,6 @@
             background-color: var(--bg-dark);
             color: var(--text);
             overflow-x: hidden;
-            /* تم إيقاف الـ scroll-snap لتسهيل تصفح الصور بحرية */
             scroll-behavior: smooth;
         }
 
@@ -78,7 +77,6 @@
         .btn-primary { background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #000; }
         .btn-primary:hover { transform: scale(1.05); box-shadow: var(--glow); }
 
-        /* تنسيقات معرض الصور للمشاريع */
         .project-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -121,19 +119,53 @@
             border: 1px solid var(--primary);
         }
 
+        .edu-container {
+            display: flex; 
+            align-items: center; 
+            gap: 25px; 
+            flex-wrap: wrap;
+        }
+
+        .edu-logo {
+            width: 120px; 
+            height: 120px; 
+            object-fit: contain; 
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 10px; 
+            border-radius: 15px;
+            border: 2px solid var(--primary);
+        }
+
         @media (max-width: 768px) { 
             section { padding: 3rem 1rem; }
             h2 { font-size: 2rem; }
+            .edu-container { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
     <section class="reveal-section">
-        <img src="Muhammad-Abozied.png" alt="Muhammad Abozied" class="profile-img">
+        <img src="Muhammad Abozied.png" alt="Muhammad Abozied" class="profile-img">
         <h1 style="font-size: 3rem; letter-spacing: -1px; text-align: center;">Muhammad <span style="color: var(--primary);">ABOZIED</span></h1>
         <p style="font-size: 1.4rem; color: var(--secondary); margin-top: 10px; text-align: center;">Founder of CyberRoute | Security Operations Architect</p>
         <p style="opacity: 0.6; margin-top: 5px; text-align: center;"><i class="fas fa-shield-alt"></i> SOC Analyst & Incident Responder</p>
+    </section>
+
+    <section class="reveal-section">
+        <div class="container">
+            <h2>Academic Background</h2>
+            <div class="card edu-container">
+                <img src="Minia U.png" alt="Minia University" class="edu-logo">
+                <div style="flex: 1;">
+                    <h3 style="color: var(--secondary); font-size: 1.5rem;">B.Sc. Communications & Electronics Engineering</h3>
+                    <p style="font-weight: bold; margin-top: 5px; font-size: 1.1rem;">Faculty of Engineering, Minya University</p>
+                    <p style="margin-top: 10px; opacity: 0.8; line-height: 1.6;">
+                        Solid foundation in telecommunications, packet-level signal processing, and the underlying hardware infrastructure. This academic rigor empowers my deep, low-level understanding of network protocols, traffic analysis, and enterprise security architecture.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section class="reveal-section">
@@ -177,7 +209,7 @@
             <div class="card">
                 <div style="text-align: center;">
                     <h3 style="color: var(--secondary); font-size: 1.8rem;">Founder & Principal Strategist</h3>
-                    <img src="cyber-route-large.png" alt="Cyber Route Academy Logo and Cover" class="cyber-route-img">
+                    <img src="CyberRoute cover.png" alt="Cyber Route Academy Logo and Cover" class="cyber-route-img">
                 </div>
                 <p style="margin-top: 15px; font-size: 1.1rem; text-align: center;">Building a specialized academy and brand focused on the <strong>Blue Team Career Path</strong>.</p>
                 <ul style="max-width: 800px; margin: 20px auto 0;">
@@ -211,7 +243,7 @@
             <h2 style="font-size: 3rem;">Secure Your Infrastructure.</h2>
             <p style="margin-bottom: 2rem; font-size: 1.2rem;">I am ready to bring my SOC expertise and leadership to your proactive team.</p>
             <div class="btn-group" style="justify-content: center; display: flex; gap: 20px; flex-wrap: wrap;">
-                <a href="Muhammad-ABOZIED.pdf" target="_blank" class="btn" style="border: 2px solid var(--primary); color: #fff;">
+                <a href="Muhammad ABOZIED.pdf" target="_blank" class="btn" style="border: 2px solid var(--primary); color: #fff;">
                     <i class="fas fa-file-download"></i> Detailed CV
                 </a>
                 <a href="mailto:muhammadabozied3@gmail.com" class="btn btn-primary">
